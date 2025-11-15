@@ -41,6 +41,34 @@ Production-ready Dockerfile
 
 Works on any container platform (Render, Cloud Run, etc.)
 
+## 🔗 Live Deployed Service (Render)
+
+Your service is deployed and publicly accessible:
+
+👉 https://aurora-qa-service-1.onrender.com
+
+Swagger Docs
+
+👉 https://aurora-qa-service-1.onrender.com/docs
+
+Test Endpoint
+
+POST /ask
+Example body:
+
+{
+  "question": "When is Layla planning her trip to London?"
+}
+
+## 🗂️ Repository Structure
+.
+├── main.py
+├── requirements.txt
+├── Dockerfile
+├── sample_messages.json
+├── .gitignore
+└── README.md
+
 ## 🚀 Architecture Overview
 1️⃣ Message Loading (Startup)
 
@@ -227,6 +255,22 @@ docker build -t aurora-qa-service .
 Run container
 docker run -p 8000:8000 aurora-qa-service
 
+## 🚀 Deployment (Render Instructions Used)
+
+(Keep this short — they just need to know you deployed correctly)
+
+Login to Render
+
+Create a Web Service → Docker
+
+Connect GitHub repo
+
+Use default build settings
+
+Render automatically builds & deploys
+
+Service runs on port 8000 (Render auto-detects from Uvicorn)
+
 ## 📊 Design Notes (Bonus)
 Why embeddings?
 
@@ -277,3 +321,55 @@ Ensure the API returns:
 Optionally update sample_messages.json
 
 No other code changes required.
+
+## 📌 API Reference
+POST /ask
+
+Request:
+
+{
+  "question": "your question here"
+}
+
+
+Response:
+
+{
+  "answer": "..."
+}
+
+
+
+## 🚀 Submission
+
+As requested in the assessment instructions, the following items complete the submission:
+
+1. Public GitHub Repository
+
+Your implementation is available publicly at:
+👉 https://github.com/rahul-datalab/aurora-qa-service
+
+2. Deployed Service URL
+
+The FastAPI service is deployed on Render:
+👉 https://aurora-qa-service-1.onrender.com
+
+3. Example API Endpoint
+
+Ask endpoint:
+
+POST https://aurora-qa-service-1.onrender.com/ask
+
+
+Example request:
+
+{
+  "question": "When is Layla planning her trip to London?"
+}
+
+
+Example response:
+
+{
+  "answer": "Layla (2024-01-01T10:00:00Z): I'm planning a trip to London in March 2025."
+}
